@@ -46,3 +46,9 @@
 - llama.cpp 연동을 위한 브릿지 모듈 제작(LlamaBridge 구현)
 - Jetpack Compose UI 구현
 - 중급 개발자를 위한 성능 최적화 팁 및 고려 사항
+
+### 부 록
+ - A. 인터넷 검색 + LLM 응답
+ - B. llama.cpp 및 LLM 라이선스
+   1. llama.cpp 라이선스
+   2. LLM (EXAONE-3.5/4.0) 라이선스
