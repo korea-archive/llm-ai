@@ -52,3 +52,36 @@
  - B. llama.cpp 및 LLM 라이선스
    1. llama.cpp 라이선스
    2. LLM (EXAONE-3.5/4.0) 라이선스
+
+-----------------------------------------
+## ⚠️ Known Issues<br>
+### llama.cpp Android 빌드 시 posix_spawn_file_* 에러
+
+#### -증상<br>
+ Android NDK 환경에서 llama.cpp 빌드 중 다음과 같은 에러 발생
+```bash
+
+error: use of undeclared identifier 'posix_spawn_file_actions_*'
+
+```
+
+#### -영향 버전<br>
+ git describe --tags --always 기준
+ b7850 이후 릴리스 버전
+
+#### -원인<br>
+ Android 플랫폼에서 지원되지 않는 posix_spawn API를 사용하는
+ test-* 또는 llama-server 타겟이 함께 빌드되면서 발생
+
+#### -해결 방법 (권장)<br>
+ Android 앱 개발 시 필요한 타겟만 선택적으로 빌드
+```bash
+
+ cmake --build . --target llama ggml ggml-base ggml-cpu common llama-cli -j
+
+```
+#### -비고
+ Linux / macOS 네이티브 빌드에는 영향 없음<br>
+ Android NDK 크로스컴파일 환경에서만 발생
+
+  --------------------------------------
